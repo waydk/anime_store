@@ -1,0 +1,120 @@
+.container-box {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.58);
+    margin-bottom: 50px
+}
+
+
+/* Header */
+h3 {
+    padding-top: 30px;
+}
+
+.header-img {
+    filter: brightness(15%);
+    width: 100%;
+}
+
+.swag-header {
+    text-align: center;
+	position: relative;
+}
+
+.header-content {
+    color: white;
+	position: absolute;
+	top	: 25%;
+	left: 2%;
+	width: 100%;
+}
+
+.btn {
+    margin-top: 30px;
+}
+
+
+@media (max-width: 1200px){
+    .header-img {
+        height: 350px;
+    }
+  }
+
+/* Products */
+#products {
+    padding-top: 80px;
+}
+
+/* Testimonials */
+#testimonials {
+    margin-top: 30px;
+}
+
+.card {
+    border: none
+}
+
+.profile img {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+}
+
+.second {
+    border-left: 2px dotted lightgrey;
+    border-right: 2px dotted lightgrey
+}
+
+@media only screen and (max-width: 600px) {
+    .second {
+        border: none;
+        border-top: 2px dotted lightgrey;
+        margin-top: 25px
+    }
+
+    .third {
+        border-top: 2px dotted lightgrey;
+        margin-top: 25px
+    }
+
+    .icon {
+        margin-top: 20px;
+        top: 0
+    }
+}
+
+.intro {
+    font-size: 11px;
+    margin-left: 13px;
+    position: relative;
+    bottom: 8px
+}
+
+.row {
+    padding-bottom: 53px
+}
+
+.company {
+    position: absolute;
+    bottom: -42px
+}
+
+.icon {
+    margin-bottom: 15px;
+    position: relative;
+    bottom: 20px
+}
+
+.header {
+    padding-top: 35px;
+    padding-bottom: 50px
+}
+
+/* Location */
+.location {
+    padding-top: 50px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background: #212529;
+}

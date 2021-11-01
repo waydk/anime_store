@@ -7,6 +7,8 @@ authors = ["waydk <waydk.note@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 Django = "^3.2.8"
+psycopg2-binary = "^2.9.1"
+environs = "^9.3.4"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
