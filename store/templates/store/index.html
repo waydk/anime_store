@@ -52,67 +52,19 @@
     <h2 class="text-center pb-4">Наши товары</h2>
     <div class="container container-box">
         <div class="row">
-            <div class="card col-lg-3 col-md-6">
-                <div class="card-body text-center">
-                <img src="https://telegra.ph/file/73c5170451571404176da.jpg" width='200px' height='200px' alt="">
-                <h4 class="card-title">Толстовки и худи</h4>
-                <p class="text-muted">От 2500 рублей</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">Смотреть товары</a>
+        {% if categories %}
+            {% for category in categories %}
+                <div class="card col-lg-3 col-md-6">
+                    <div class="card-body text-center">
+                    <img src="{{ category.photo }}" width='200px' height='200px' alt="">
+                    <h4 class="card-title"> {{category.name}} </h4>
+                    <p class="text-muted">От {{category.start_price}} рублей</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">Смотреть товары</a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="card col-lg-3 col-md-6">
-                <div class="card-body text-center">
-                <img src="https://telegra.ph/file/4c30ed101ad91f70ae7fe.png" width='200px' height='200px' alt="">
-                <h4 class="card-title">Значки</h4>
-                <p class="text-muted">От 50р</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">Смотреть товары</a>
-                </div>
-            </div>
-
-            <div class="card col-lg-3 col-md-6">
-                <div class="card-body text-center">
-                <img src="https://telegra.ph/file/804c241ca17bbe4b90616.jpg" width='200px' height='200px' alt="">
-                <h4 class="card-title">Аксессуары</h4>
-                <p class="text-muted">От 50р</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">Смотреть товары</a>
-                </div>
-            </div>
-            <div class="card col-lg-3 col-md-6">
-                <div class="card-body text-center">
-                <img src="https://telegra.ph/file/73c5170451571404176da.jpg" width='200px' height='200px' alt="">
-                <h4 class="card-title">Толстовки и худи</h4>
-                <p class="text-muted">От 2500 рублей</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">Смотреть товары</a>
-                </div>
-            </div>
-
-            <div class="card col-lg-3 col-md-6">
-                <div class="card-body text-center">
-                <img src="https://telegra.ph/file/4c30ed101ad91f70ae7fe.png" width='200px' height='200px' alt="">
-                <h4 class="card-title">Значки</h4>
-                <p class="text-muted">От 50р</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">Смотреть товары</a>
-                </div>
-            </div>
-
-            <div class="card col-lg-3 col-md-6">
-                <div class="card-body text-center">
-                <img src="https://telegra.ph/file/804c241ca17bbe4b90616.jpg" width='200px' height='200px' alt="">
-                <h4 class="card-title">Аксессуары</h4>
-                <p class="text-muted">От 50р</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">Смотреть товары</a>
-                </div>
-            </div>
-            <div class="card col-lg-3 col-md-6">
-                <div class="card-body text-center">
-                <img src="https://telegra.ph/file/73c5170451571404176da.jpg" width='200px' height='200px' alt="">
-                <h4 class="card-title">Толстовки и худи</h4>
-                <p class="text-muted">От 2500 рублей</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">Смотреть товары</a>
-                </div>
-            </div>
-
-            <div class="card col-lg-3 col-md-6">
-                <div class="card-body text-center">
-                <img src="https://telegra.ph/file/4c30ed101ad91f70ae7fe.png" width='200px' height='200px' alt="">
-                <h4 class="card-title">Значки</h4>
-                <p class="text-muted">От 50р</p><a class="btn btn-outline-primary btn-sm" href="#" data-abc="true">Смотреть товары</a>
-                </div>
-            </div>
+            {% endfor %}
+        {% else %}
+                <p>No polls are available.</p>
+        {% endif %}
         </div>
     </div>
   </section>

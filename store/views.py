@@ -1,13 +1,10 @@
-from django.http.response import HttpResponse
-from django.template import loader
 
-from store.models import Product
+from django.shortcuts import render
+
+from store.models import Categories
 
 # Create your views here.
 def index(request):
-    latest_product_list = Product.objects.order_by('-pub_date')[:5]
-    template = loader.get_template('store/index.html')
-    context = {
-        'latest_product_list': latest_product_list,
-    }
-    return HttpResponse(template.render(context, request))
+    categories = Categories.objects.all()
+    context = {'categories': categories}
+    return render(request, 'store/index.html', context)
