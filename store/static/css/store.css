@@ -43,6 +43,26 @@ h3 {
     padding-top: 80px;
 }
 
+.ratings i {
+    font-size: 16px;
+    color: red
+}
+
+.product-image {
+    width: 100%
+}
+
+.dot {
+    height: 7px;
+    width: 7px;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 3px;
+    background-color: blue;
+    border-radius: 50%;
+    display: inline-block
+}
+
 /* Testimonials */
 #testimonials {
     margin-top: 30px;

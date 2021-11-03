@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/store.css' %}">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div class="container navbar-custom p-4">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="https://sun1-87.userapi.com/c636325/v636325756/66b62/JgTJW-aqKbk.jpg?ava=1" alt="" width="75" height="75">
+          </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto text-center">
+            <a class="nav-link" aria-current="page" href="">Главная</a>
+            <a class="nav-link" href="">Товары</a>
+            <a class="nav-link" href="">Услуги</a>
+            <a class="nav-link" href="">Новости</a>
+            <a class="nav-link" href="">Контакты</a>
+            <a class="nav-link" href="">О нас</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- Header -->
+  <header>
+        <div class="swag-header">
+            <img class='header-img' src="http://sun9-39.userapi.com/c831408/v831408045/159496/6RA0pDoiYws.jpg" alt="" />
+            <div class="header-content">
+                <h1>SWAG Аниме и К-рор товары Улан-Удэ</h1>
+                <h3>Группа для города Улан-Удэ</h3>
+                <a class="btn btn-outline-light btn-lg" href="#!" role="button">Позвонить</a>
+            </div>
+        </div>
+  </header>
+
+
+  {% block main %} 
+  {% endblock %}
+
+  <!-- FOOTER -->
+  <footer class="w-100 py-4 flex-shrink-0">
+    <div class="container py-4">
+        <div class="row gy-4 gx-5">
+            <div class="col-lg-4 col-md-4">
+                <h5 class="h1 text-white">SWAG</h5>
+                <p class="small text-muted">Аниме магазин в Улан-Удэ. 2021.</p>
+                <p class="small text-muted mb-0">&copy; Все права защищены</p>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <h5 class="text-white mb-3">Социальные сети</h5>
+                <ul class="list-unstyled text-muted">
+                    <li><a href="#">Инстаграм</a></li>
+                    <li><a href="#">Вконтакте</a></li>
+                    <li><a href="#">Тикток</a></li>
+                </ul>
+            </div>
+          
+            <div class="col-lg-4 col-md-4">
+              <h5 class="text-white mb-3">Позвонить</h5>
+              <ul class="list-unstyled text-muted">
+                  <li><a href="#">📞 +7-902-537-97-99 </a></li>
+              </ul>
+          </div>
+        </div>
+    </div>
+</footer>
+ 
+</body>
+<script src="https://kit.fontawesome.com/fc06632d11.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</html>

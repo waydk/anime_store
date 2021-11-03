@@ -1,0 +1,41 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+
+{% block title %} 
+    {{ title }}
+{% endblock %}
+
+{% block main %}
+    <div class="container mt-5 mb-5">
+        <div class="d-flex justify-content-center row">
+            {% if products %}
+                {% for product in products %}
+                    <div class="col-md-10 p-4">
+                        <div class="row p-2 bg-white border rounded">
+                            <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{% static 'images/'%}{{product.photo}}"></div>
+                            <div class="col-md-6 mt-1">
+                                <h5>{{ product.name }}</h5>
+                                <div class="d-flex flex-row">
+                                    <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 310</div>
+                                </div>
+                                <div class="mt-1 mb-1 spec-1"><span>Классная вещь!</span><span class="dot"></span><span>Отличное качество</span><span class="dot"></span><span>Крутяк<br></span></div>
+                                <p class="text-justify text-truncate para mb-0">{{ product.description }}<br><br></p>
+                            </div>
+                            <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                                <div class="d-flex flex-row align-items-center">
+                                    <h4 class="mr-1">{{ product.price }} <i class="fas fa-ruble-sign"></i></h4>
+                                </div>
+                                <!-- <h6 class="text-success">Free shipping</h6> -->
+                                <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">Подробности</button><button class="btn btn-outline-primary btn-sm mt-2" type="button">Сохранить</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+            {% else %}
+                <p>No products are available.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
