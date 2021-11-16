@@ -1,0 +1,98 @@
+{% extends "store/base.html" %}
+ 
+{% block title %}Создать аккаунт{% endblock %}
+
+{% block main %}
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="signup-form">
+                    <form action="." method="post" class="mt-5 border p-4 bg-light shadow">
+                        {% csrf_token %}
+                        <h4 class="mb-5 text-secondary">Создать аккаунт</h4>
+                        <div class="row">
+                            <div class="mb-3 col-12">
+                                <label>Имя пользователя<span class="text-danger">*</span></label>
+                                <input type="text" name="username" class="form-control" placeholder="Имя пользователя">
+                            </div>
+    
+                            <div class="mb-3 col-6">
+                                <label>Имя<span class="text-danger">*</span></label>
+                                <input type="text" name="first_name" class="form-control" placeholder="Имя">
+                            </div>
+
+                            <div class="mb-3 col-6">
+                                <label>Почта<span class="text-danger">*</span></label>
+                                <input type="email" name="email" class="form-control" placeholder="Почта">
+                            </div>
+    
+                            <div class="mb-3 col-12">
+                                <label>Пароль<span class="text-danger">*</span></label>
+                                <input type="password" name="password" class="form-control" placeholder="Пароль">
+                            </div>
+                            <div class="mb-3 col-12">
+                                <label>Подтвердите пароль<span class="text-danger">*</span></label>
+                                <input type="password2" name="password2" class="form-control" placeholder="Подтвердите пароль">
+                            </div>
+                            <div class="col-12">
+                               <button type="submit" class="btn btn-primary float-end">Создать аккаунт</button>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="text-center mt-3 text-secondary">У вас уже есть аккаунт? <a href="#">Войти</a></p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+              <div class="card-img-left d-none d-md-flex">
+                <!-- Background image for card set in CSS! -->
+              </div>
+              <div class="card-body p-4 p-sm-5">
+                <h5 class="card-title text-center mb-5 fw-light fs-5">Регистрация</h5>
+                <form action="." method="post">
+                  {% csrf_token %}
+                  <div class="form-floating mb-3">
+                    <input type="text" name='username' class="form-control" id="floatingInputUsername" placeholder="Имя пользователя" required autofocus>
+                    <label for="floatingInputUsername">Имя пользователя</label>
+                  </div>
+    
+                  <div class="form-floating mb-3">
+                    <input type="text" name='first_name' class="form-control" id="floatingInputFirstName" placeholder="Имя" required autofocus>
+                    <label for="floatingInputUsername">Имя</label>
+                  </div>
+    
+                  <hr>
+    
+                  <div class="form-floating mb-3">
+                    <input type="text" name='email' class="form-control" id="floatingInputEmail" placeholder="Почта" required autofocus>
+                    <label for="floatingInputUsername">Почта</label>
+                  </div>
+    
+                  <div class="form-floating mb-3">
+                    <input type="password" name='password' class="form-control" id="floatingInputPassword" placeholder="Пароль" required autofocus>
+                    <label for="floatingInputPassword">Пароль</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input type="password" name='password2' class="form-control" id="floatingInputPassword2" placeholder="Подтверждение пароля" required autofocus>
+                    <label for="floatingInputPassword2">Подтверждение пароля</label>
+                  </div>
+    
+                  <div class="d-grid mb-2">
+                    <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Зарегистрироваться</button>
+                  </div>
+    
+                  <a class="d-block text-center mt-2 small" href="{% url 'login'%}?next={{request.path}}">Есть аккаунт? Войти</a>
+
+    
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}

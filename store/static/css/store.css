@@ -1,3 +1,4 @@
+/* Globals */
 .container-box {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.58);
     margin-bottom: 50px
@@ -138,3 +139,227 @@ h3 {
 footer {
     background: #212529;
 }
+
+.footer-icon {
+    color: white;
+    padding: 10px;
+}
+
+.footer-icon:hover {
+    color: #7c7b7b
+}
+
+
+/* Product details */
+.product-detail-photo {
+    border-radius: 20px;
+}
+
+.product-price {
+    font-size: 30px;
+}
+
+.description-detail-product {
+    margin-bottom: 70px;
+    margin-top: 70px;
+}
+
+/* Comments */
+.be-comment-block {
+    margin-bottom: 50px !important;
+    border: 1px solid #edeff2;
+    border-radius: 2px;
+    padding: 50px 70px;
+    border:1px solid #ffffff;
+}
+
+.comments-title {
+    font-size: 16px;
+    color: #262626;
+    margin-bottom: 15px;
+    font-family: 'Conv_helveticaneuecyr-bold';
+}
+
+.be-img-comment {
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-bottom: 15px;
+}
+
+.be-ava-comment {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.be-comment-content {
+    margin-left: 80px;
+}
+
+.be-comment-content span {
+    display: inline-block;
+    width: 49%;
+    margin-bottom: 15px;
+}
+
+.be-comment-name {
+    font-size: 13px;
+    font-family: 'Conv_helveticaneuecyr-bold';
+}
+
+.be-comment-content a {
+    color: #383b43;
+}
+
+.be-comment-content span {
+    display: inline-block;
+    width: 49%;
+    margin-bottom: 15px;
+}
+
+.be-comment-time {
+    text-align: right;
+}
+
+.be-comment-time {
+    font-size: 11px;
+    color: #b4b7c1;
+}
+
+.be-comment-text {
+    font-size: 13px;
+    line-height: 18px;
+    color: #7a8192;
+    display: block;
+    background: #f6f6f7;
+    border: 1px solid #edeff2;
+    padding: 15px 20px 20px 20px;
+}
+
+.form-group.fl_icon .icon {
+    position: absolute;
+    top: 1px;
+    left: 16px;
+    width: 48px;
+    height: 48px;
+    background: #f6f6f7;
+    color: #b5b8c2;
+    text-align: center;
+    line-height: 50px;
+    -webkit-border-top-left-radius: 2px;
+    -webkit-border-bottom-left-radius: 2px;
+    -moz-border-radius-topleft: 2px;
+    -moz-border-radius-bottomleft: 2px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.form-group .form-input {
+    font-size: 13px;
+    line-height: 50px;
+    font-weight: 400;
+    color: #b4b7c1;
+    width: 100%;
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid #edeff2;
+    border-radius: 3px;
+}
+
+.form-group.fl_icon .form-input {
+    padding-left: 70px;
+}
+
+.form-group textarea.form-input {
+    height: 150px;
+}
+
+/* Rating */
+
+
+   .rate i, .rate i:hover ~ i {
+    color: #222;
+    text-shadow: none;
+    transition: color 200ms,
+                text-shadow 200ms;
+    transition-delay: 0;
+  }
+  
+  .rate:hover i {
+    color: #fc0;
+    text-shadow: #fc0 0 0 20px;
+  }
+  
+  .rate:hover i:nth-child(2) {
+    transition-delay: 30ms;
+  }
+  
+  .rate:hover i:nth-child(3) {
+    transition-delay: 60ms;
+  }
+  
+  .rate:hover i:nth-child(4) {
+    transition-delay: 90ms;
+  }
+  
+  .rate:hover i:nth-child(5) {
+    transition-delay: 120ms;
+  }
+  
+  .rate i {
+    font-size: 50px;
+    cursor: pointer;
+    font-style: normal;
+  }
+
+/* Registraion */
+.card-img-left {
+    width: 45%;
+    /* Link to your background image using in the property below! */
+    background: scroll center url('https://i1.photo.2gis.com/images/profile/844424964332681_3037.jpg');
+    background-size: cover;
+  }
+  
+  .btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+  }
+
+
+/* Checkbox stars */
+.rating {
+    overflow: hidden;
+    vertical-align: bottom;
+    display: inline-block;
+    width: 155px;
+    height: 30px;
+  }
+  
+  .rating > input {
+    opacity: 0;
+    margin-right: -100%;
+  }
+  
+  .rating > label {
+    position: relative;
+    display: block;
+    float: right;
+    background: url('https://static.thenounproject.com/png/77982-200.png');
+    background-size: 30px 30px;
+  }
+  
+  .rating > label:before {
+    display: block;
+    opacity: 0;
+    content: '';
+    width: 30px;
+    height: 30px;
+    background: url('https://w7.pngwing.com/pngs/413/161/png-transparent-narutomaki-emoji-naruto-uzumaki-fishcakes-emoji.png');
+    background-size: 30px 30px;
+    transition: opacity 0.2s linear;
+  }
+  
+  .rating > label:hover:before,  .rating > label:hover ~ label:before,  .rating:not(:hover) > :checked ~ label:before { opacity: 1; }

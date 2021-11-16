@@ -1,0 +1,9 @@
+{% extends "store/base.html" %}
+
+{% block main %}
+<div class="container">
+    <p>Logged out!</p>
+</div>
+
+<a href="{% url 'login'%}">Click here to login again.</a>
+{% endblock %}

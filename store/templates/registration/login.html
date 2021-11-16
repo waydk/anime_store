@@ -1,0 +1,52 @@
+
+
+{% extends "store/base.html" %}
+
+{% block title %} Вход {% endblock %}
+
+{% block main %}
+
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+          <div class="card-img-left d-none d-md-flex">
+            <!-- Background image for card set in CSS! -->
+          </div>
+          <div class="card-body p-4 p-sm-5">
+            {% if form.errors %}
+              <h5 class="card-title text-center mb-5 fw-light fs-5">Неправильные данные</h5>
+            {% else %}
+              <h5 class="card-title text-center mb-5 fw-light fs-5">Вход</h5>
+            {% endif %}
+            
+            <form action="{% url 'login' %}" method="post">
+              {% csrf_token %}
+              <div class="form-floating mb-3">
+                <input type="text" name='username' class="form-control" id="floatingInputUsername" placeholder="Имя пользователя" required autofocus>
+                <label for="floatingInputUsername">Имя пользователя</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="password" name='password' class="form-control" id="floatingInputPassword" placeholder="Пароль" required autofocus>
+                <label for="floatingInputPassword">Пароль</label>
+              </div>
+
+              <div class="d-grid mb-2">
+                <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit" value="login" >Войти</button>
+              </div>
+
+              <a class="d-block text-center mt-2 small" href="{% url 'registr'%}">Нету аккаунта? Зарегистрироваться</a>
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

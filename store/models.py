@@ -3,7 +3,7 @@ import datetime
 from django.db import models
 from django.utils import timezone
 
-# Create your models here.
+
 class Categories(models.Model):
     name = models.CharField(max_length=200)
     start_price = models.IntegerField()
@@ -14,11 +14,10 @@ class Categories(models.Model):
 
 
 class Product(models.Model):
-    product_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=200)
+    features = models.JSONField()
     price = models.IntegerField()
     photo = models.ImageField()
-    rating = models.IntegerField()
     category = models.ForeignKey(Categories, on_delete=models.CASCADE)
     description = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
@@ -28,3 +27,35 @@ class Product(models.Model):
 
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+
+
+class Comments(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    content = models.CharField(max_length=2000)
+    author = models.CharField(max_length=200)
+    on_moderation = models.BooleanField()
+    pub_date = models.DateTimeField('date puplished')
+
+    def __str__(self) -> str:
+        return self.content
+
+    def was_published_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+
+
+class RatingStar(models.Model):
+    value = models.SmallIntegerField(default='0')
+
+    def __str__(self) -> str:
+        return str(self.value)
+
+    class Meta:
+        ordering = ['-value']
+
+class Rating(models.Model):
+    author = models.CharField(max_length=200)
+    star = models.ForeignKey(RatingStar, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f"{self.star} - {self.product}"
