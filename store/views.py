@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import CommentForm, RatingForm, UserRegistrationForm
 from django.http import HttpResponse
 from django.utils import timezone
@@ -36,10 +36,23 @@ def detail_product(request, product_id):
     ratings = Rating.objects.filter(product_id=product_id)
     ratings = [int(str(rating.star)) for rating in ratings]
     average_rating = int(mean(ratings))
+
+    # Check comment
+    show_comment = None
+    user_comment = Comments.objects.filter(product_id=product_id, author=request.user)
+
+    # Is there a user comment on this product
+    if user_comment:
+        # In moderation
+        if user_comment[0].on_moderation:
+            show_comment = 'Ваш комментарий на модерации'
+        # Not moderation
+        if not user_comment[0].on_moderation:
+            show_comment = 'Вы уже писали комментарий под данным продуктом'
     return render(request, 'store/product_detail.html',
                   {'product': product, 'comments': product_comments,
                    'comment_form': CommentForm, 'star_form': RatingForm(),
-                   'average_rating': average_rating})
+                   'average_rating': average_rating, 'show_comment': show_comment})
 
 
 def registration(request):
@@ -72,7 +85,7 @@ def add_comment(request):
             comment.on_moderation = True
             comment.pub_date = timezone.now()
             comment.save()
-            return HttpResponse(status=201)
+            return redirect(request.META['HTTP_REFERER'])
         else:
             return HttpResponse(status=400)
 
