@@ -49,10 +49,19 @@ def detail_product(request, product_id):
         # Not moderation
         if not user_comment[0].on_moderation:
             show_comment = 'Вы уже писали комментарий под данным продуктом'
+
+    # Check rating
+    show_rating = None
+    user_rating = Rating.objects.filter(product_id=product_id, author=request.user)
+
+    if user_rating:
+        show_rating = 'Вы уже оценивали данный товар'
+
     return render(request, 'store/product_detail.html',
                   {'product': product, 'comments': product_comments,
                    'comment_form': CommentForm, 'star_form': RatingForm(),
-                   'average_rating': average_rating, 'show_comment': show_comment})
+                   'average_rating': average_rating, 'show_comment': show_comment,
+                   'show_rating': show_rating})
 
 
 def registration(request):
@@ -100,6 +109,10 @@ def add_star_rating(request):
             new_rating.product_id = int(request.POST.get("product"))
             new_rating.star_id = int(request.POST.get("star"))
             new_rating.author = request.user
+            # Check author
+            user_rating = Rating.objects.filter(product_id=int(request.POST.get("product")), author=request.user)
+            if user_rating:
+                return HttpResponse(status=400)
             new_rating.save()
             return HttpResponse(status=201)
         else:
