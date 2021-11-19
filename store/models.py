@@ -53,9 +53,17 @@ class RatingStar(models.Model):
         ordering = ['-value']
 
 class Rating(models.Model):
-    author = models.CharField(max_length=200)
+    user = models.CharField(max_length=200)
     star = models.ForeignKey(RatingStar, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f"{self.star} - {self.product}"
+
+class ShopCart(models.Model):
+    user = models.CharField(max_length=200)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    price = models.FloatField(default=0)
+
+    def __str__(self) -> str:
+        return f"{self.product.name}"

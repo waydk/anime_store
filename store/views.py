@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.template.defaulttags import register
 
 
-from store.models import Categories, Comments, Product, Rating
+from store.models import Categories, Comments, Product, Rating, ShopCart
 
 # Helpers
 def mean(numbers: list):
@@ -52,7 +52,7 @@ def detail_product(request, product_id):
 
     # Check rating
     show_rating = None
-    user_rating = Rating.objects.filter(product_id=product_id, author=request.user)
+    user_rating = Rating.objects.filter(product_id=product_id, user=request.user)
 
     if user_rating:
         show_rating = 'Вы уже оценивали данный товар'
@@ -108,15 +108,35 @@ def add_star_rating(request):
             new_rating = rating_form.save(commit=False)
             new_rating.product_id = int(request.POST.get("product"))
             new_rating.star_id = int(request.POST.get("star"))
-            new_rating.author = request.user
-            # Check author
-            user_rating = Rating.objects.filter(product_id=int(request.POST.get("product")), author=request.user)
+            new_rating.user = request.user
+            # Check user
+            user_rating = Rating.objects.filter(product_id=int(request.POST.get("product")), user=request.user)
             if user_rating:
                 return HttpResponse(status=400)
             new_rating.save()
             return HttpResponse(status=201)
         else:
             return HttpResponse(status=400)
+
+
+def add_to_shop_cart(request, product_id):
+    """Add and show shop cart
+    """
+    product = Product.objects.get(id=product_id)
+    new_item = ShopCart()
+    new_item.user = request.user
+    new_item.product = product
+    new_item.price = product.price
+    new_item.save()
+    items_cart = ShopCart.objects.filter(user=request.user)
+    return render(request, 'store/shop_cart.html', {'items_cart': items_cart})
+
+def shop_cart(request):
+    """Show shop cart
+    """
+    items_cart = ShopCart.objects.filter(user=request.user)
+    return render(request, 'store/shop_cart.html', {'items_cart': items_cart})
+
 
 # Custom filters
 @register.filter
