@@ -1,3 +1,4 @@
+from django.db import models
 from django.shortcuts import render, redirect
 from .forms import CommentForm, RatingForm, UserRegistrationForm
 from django.http import HttpResponse
@@ -5,7 +6,7 @@ from django.utils import timezone
 from django.template.defaulttags import register
 
 
-from store.models import Categories, Comments, Product, Rating, ShopCart
+from store.models import Categories, Comments, Favorite, Product, Rating, ShopCart
 
 # Helpers
 def mean(numbers: list):
@@ -81,6 +82,7 @@ def registration(request):
         user_form = UserRegistrationForm()
     return render(request, 'registration/registr.html', {'user_form': user_form})
 
+# Comments and rating
 
 def add_comment(request):
     """Product comment
@@ -118,24 +120,80 @@ def add_star_rating(request):
         else:
             return HttpResponse(status=400)
 
+# Cart and Favorite
 
-def add_to_shop_cart(request, product_id):
-    """Add and show shop cart
+def show_cart_or_favorite(request, favorite=False, cart=False):
+    """Show cart or favorite
     """
-    product = Product.objects.get(id=product_id)
-    new_item = ShopCart()
-    new_item.user = request.user
-    new_item.product = product
-    new_item.price = product.price
-    new_item.save()
-    items_cart = ShopCart.objects.filter(user=request.user)
-    return render(request, 'store/shop_cart.html', {'items_cart': items_cart})
+    if cart:
+        model = Favorite
+    if favorite:
+        model = ShopCart
+    items = model.objects.filter(user=request.user)
+    total_price = sum([item.product.price for item in items])
+    if cart:
+        return render(request, 'store/shop_cart.html', {'items_cart': items, 'total_price': float(total_price)})
+    if favorite:
+        return render(request, 'store/favorite.html', {'items_favorite': items, 'total_price': float(total_price)})
 
 def shop_cart(request):
     """Show shop cart
     """
-    items_cart = ShopCart.objects.filter(user=request.user)
-    return render(request, 'store/shop_cart.html', {'items_cart': items_cart})
+    return show_cart_or_favorite(request, cart=True)
+
+
+def favorite(request):
+    """Show favorite
+    """
+    return show_cart_or_favorite(request, favorite=True)
+
+
+def add_to_cart_or_favorite(request, product_id, cart=False, favorite=False):
+    """Add cart or favorite
+    """
+    product = Product.objects.get(id=product_id)
+    if cart:
+        model = ShopCart
+    if favorite:
+        model = Favorite
+
+    # Repeat check
+    item = model.objects.filter(user=request.user, product=product_id)
+    items = model.objects.filter(user=request.user)
+    total_price = sum([item.product.price for item in items])
+    if item:
+        if cart:
+            return render(request, 'store/shop_cart.html',
+                          {'items_cart': items, 'total_price': float(total_price)})
+        if favorite:
+            return render(request, 'store/favorite.html',
+                          {'items_favorite': items, 'total_price': float(total_price)})
+    if cart:
+        new_item = ShopCart()
+    if favorite:
+        new_item = Favorite()
+
+    new_item.user = request.user
+    new_item.product = product
+    new_item.price = product.price
+    new_item.save()
+
+    if cart:
+        return render(request, 'store/shop_cart.html', {'items_cart': items, 'total_price': float(total_price)})
+    if favorite:
+        return render(request, 'store/favorite.html', {'items_favorite': items, 'total_price': float(total_price)})
+
+
+def add_to_shop_cart(request, product_id):
+    """Add and show shop cart
+    """
+    return add_to_cart_or_favorite(request, product_id, cart=True)
+
+
+def add_to_favorite(request, product_id):
+    """Add and show favorite
+    """
+    return add_to_cart_or_favorite(request, product_id, favorite=True)
 
 
 # Custom filters

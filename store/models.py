@@ -67,3 +67,12 @@ class ShopCart(models.Model):
 
     def __str__(self) -> str:
         return f"{self.product.name}"
+
+
+class Favorite(models.Model):
+    user = models.CharField(max_length=200)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    price = models.FloatField(default=0)
+
+    def __str__(self) -> str:
+        return f"{self.product.name}"
