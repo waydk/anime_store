@@ -1,7 +1,14 @@
 # Anime Store
 My portfolio project. Anime store in Django
 
-![image](https://user-images.githubusercontent.com/77948380/139658682-7bb4ab50-fda7-4e0a-a65b-ad28dfdb6196.png)
+![Home-page](https://user-images.githubusercontent.com/77948380/142824175-45267df1-9f9d-4e37-a499-a8b34e0836d8.png)
+
+## Products
+![Products](https://user-images.githubusercontent.com/77948380/142823838-9e56032b-7923-497e-895c-c050a4a3df42.png)
+
+## Product detail
+![Detail](https://user-images.githubusercontent.com/77948380/142824014-ca7d1e5a-19a6-4f61-a332-5fd7d7a11187.png)
+
 
 ## Development
 ### System dependencies
